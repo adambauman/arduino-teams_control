@@ -1,0 +1,16 @@
+on run {input, parameters}
+	
+	tell application "System Events"
+		set frontmostProcess to first process where it is frontmost
+		activate application "Microsoft Teams"
+		
+		repeat while (frontmostProcess is frontmost)
+			delay 0.1
+		end repeat
+		
+		keystroke "m" using {command down, shift down}
+		set frontmost of frontmostProcess to true
+	end tell
+	
+	return input
+end run
